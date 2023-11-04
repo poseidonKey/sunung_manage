@@ -60,6 +60,15 @@ flutter:
     # To add assets to your application, add an assets section, like this:
     assets:
         - assets/test.txt
+window:
+    title: My Flutter App
+    size: Size(500,400)
+    width: 400 # 창의 너비를 조정합니다.
+    height: 500 # 창의 높이를 조정합니다.
+    position: 150, 50 # 창의 위치를 지정합니다. (x, y)
+    initialDimensions: 400, 500 # 초기 창 크기를 지정합니다.
+    minDimensions: 400, 300 # 최소 창 크기를 지정합니다.
+    maxDimensions: 1000, 800 # 최대 창 크기를 지정합니다.
     #   - images/a_dot_ham.jpeg
 
     # An image asset can refer to one or more resolution-specific "variants", see
