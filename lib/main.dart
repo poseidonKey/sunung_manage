@@ -69,67 +69,65 @@ class _MyAppState extends State<MyApp> {
                   },
                 ),
               ),
-              SizedBox(
-                height: 5,
-                child: Container(
-                  color: Colors.black,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          lst = [];
+                          _msg = '';
+                        });
+                      },
+                      child: const Text('Reset'),
+                    ),
+                    const SizedBox(
+                      width: 50,
+                    ),
+                    ElevatedButton(
+                      child: const Text('Search'),
+                      onPressed: () async {
                         lst = [];
-                        _msg = '';
-                      });
-                    },
-                    child: const Text('Reset'),
-                  ),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                  ElevatedButton(
-                    child: const Text('Search'),
-                    onPressed: () async {
-                      lst = [];
-                      data1 = [];
-                      data2 = [];
-                      data3 = [];
-                      data4 = [];
-                      id = [];
-                      try {
-                        // Read the contents of the file
-                        final contents = await rootBundle.loadString(filePath);
-                        List<String> rowData = contents.split('\n');
-                        // print(rowData[2]);
+                        data1 = [];
+                        data2 = [];
+                        data3 = [];
+                        data4 = [];
+                        id = [];
+                        try {
+                          // Read the contents of the file
+                          final contents =
+                              await rootBundle.loadString(filePath);
+                          List<String> rowData = contents.split('\n');
+                          // print(rowData[2]);
 
-                        // Split the content by the comma delimiter
-                        List<String> imsi;
-                        for (int i = 0; i < rowData.length; i++) {
-                          id.add(i + 1);
-                          imsi = rowData[i].split(',');
-                          data4.add(imsi[0]);
-                          data1.add(imsi[1]);
-                          data2.add(imsi[2]);
-                          data3.add(imsi[3]);
+                          // Split the content by the comma delimiter
+                          List<String> imsi;
+                          for (int i = 0; i < rowData.length; i++) {
+                            id.add(i + 1);
+                            imsi = rowData[i].split(',');
+                            data4.add(imsi[0]);
+                            data1.add(imsi[1]);
+                            data2.add(imsi[2]);
+                            data3.add(imsi[3]);
+                          }
+                        } catch (e) {
+                          print('An error occurred: $e');
                         }
-                      } catch (e) {
-                        print('An error occurred: $e');
-                      }
-                      for (int k = 0; k < data1.length; k++) {
-                        returnValue(data1[k], data2[k]);
-                        returnValue(data2[k], data1[k]);
-                        returnValue(data1[k], data3[k]);
-                        returnValue(data3[k], data1[k]);
-                        returnValue(data2[k], data3[k]);
-                        returnValue(data3[k], data2[k]);
-                      }
-                      setState(() {});
-                    },
-                  ),
-                ],
+                        for (int k = 0; k < data1.length; k++) {
+                          returnValue(data1[k], data2[k]);
+                          returnValue(data2[k], data1[k]);
+                          returnValue(data1[k], data3[k]);
+                          returnValue(data3[k], data1[k]);
+                          returnValue(data2[k], data3[k]);
+                          returnValue(data3[k], data2[k]);
+                        }
+                        setState(() {});
+                      },
+                    ),
+                  ],
+                ),
               )
             ],
           ),
